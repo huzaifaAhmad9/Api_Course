@@ -45,9 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
          Expanded(
            child: FutureBuilder(
                future: getPostApi(),
-               builder: (context, snapshot){
+               builder: (context, AsyncSnapshot<List<PostsModel>>snapshot){ // also use only snapshot instead of Asyncsnapshot
                  if (!snapshot.hasData) {
-                   return  const Center(child: Text('Loading'));
+                   return const Center(child: CircularProgressIndicator());
                  } else{
                    return ListView.builder(
                      itemCount: postList.length,
